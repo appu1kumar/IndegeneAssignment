@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import UsersList from './UsersList';
+import ListForm from './ListForm';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      usersList: [
+        {  
+          name: 'Appu',
+          age: 25
+        }
+      ]
+    }
+  }
+
+  onAddUserList = (list) => {
+    const users = this.state.usersList;
+    const usersList = [];
+    usersList.push(list);
+    const allUsersList = users.concat(usersList);
+    this.setState({usersList: allUsersList});
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <ListForm onAddUserList={this.onAddUserList}/>
+        <UsersList usersList={this.state.usersList}/>
+      </div>
+    );
+  }
 }
 
 export default App;
