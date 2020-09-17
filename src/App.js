@@ -8,20 +8,22 @@ class App extends Component {
     super(props);
     this.state = {
       usersList: [
-        {  
-          name: 'Appu',
-          age: 25
-        }
+       {
+         name: 'Appu',
+         age: 25
+       }
       ]
     }
   }
 
   onAddUserList = (list) => {
     const users = this.state.usersList;
-    const usersList = [];
-    usersList.push(list);
-    const allUsersList = users.concat(usersList);
-    this.setState({usersList: allUsersList});
+    const usersList = [...this.state.usersList, list];
+    // const usersList = [];
+    // usersList.push(list);
+    // const allUsersList = users.concat(usersList);
+    // this.setState({usersList: allUsersList});
+    this.setState({usersList: usersList});
   }
 
   render() {

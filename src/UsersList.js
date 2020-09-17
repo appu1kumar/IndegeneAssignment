@@ -3,6 +3,7 @@ import './UsersList.css';
 
 const UsersList = (props) => {
     const usersList = props.usersList;
+
     return(
         <div className='main'>
             <table className='content-table'>
